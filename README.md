@@ -9,7 +9,12 @@ This Python project provides a Sudoku solver with both a Streamlit web app inter
     * **Web App:** Users can input their own puzzles in the Streamlit app or generate and solve multiple puzzles.
     * **Terminal:**  The command-line interface can solve a hardcoded puzzle or generate and test a large dataset.
 * **Performance Analysis:** Measures and displays the time taken to solve puzzles, including total and average times.
-* **Clear Output:** Presents solutions in a user-friendly format (DataFrames in the web app, printed grids in the terminal).
+* **Validity Checks:** Includes functions to verify row, column, and 3x3 box constraints.
+* **Timer:** Measures and displays the solution time for each puzzle and calculates the average time across a large dataset.
+* **Puzzle Generation:** Generates a set of Sudoku puzzles (currently using a placeholder – see below).
+* **Bulk Testing:** Solves a large number of puzzles (default is 1,000,000) to evaluate performance.
+* **Clear Output:**  Prints the number of valid puzzles, total solution time, and average solution time.
+* **Copy Protection:** `copy.deepcopy()` protects the original input boards during solving.
 * **Streamlit App:** Provides an interactive web interface for solving and generating puzzles.
 * **Error Handling:**  The web app includes input validation and error handling for invalid Sudoku entries.
 
