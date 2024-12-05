@@ -70,6 +70,14 @@ This will generate and solve 1,000,000 Sudoku puzzles (you can change this numbe
 
 The included `generate_sudoku()` function creates a single base puzzle and shuffles its rows. This is a placeholder and does *not* produce a wide variety of Sudoku puzzles. For meaningful performance testing and to challenge the solver effectively, it's **crucial** to implement a more robust Sudoku generation algorithm that creates diverse and distinct puzzles, preferably with varying difficulty levels.
 
+## Performance Analysis
+
+The code generates and solves a large number of Sudoku puzzles (default 1,000,000 directly in terminal; 10,000 in streamlit). The average solving time provides a good measure of the algorithm's efficiency.  The results will be affected by:
+
+* **Puzzle Difficulty Distribution:**  A robust generator should produce puzzles of varying difficulty.
+* **Hardware:** Your computer's processing power (CPU, RAM) directly affects the solution time.
+* **Algorithm Optimizations:** Any changes to the backtracking algorithm will impact performance.
+
 ## Example Input (Web App)
 
 ```
