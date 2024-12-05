@@ -40,6 +40,30 @@ The web app has two main sections:
 
 * Run the Python script directly:  `python your_script_name.py` (replace `your_script_name.py` with your filename)
 
+**3. Using the Solver Function Directly:**
+
+The `solve_sudoku(board)` function can be imported and used independently:
+
+```python
+import sudoku_solver  # Assuming the code is saved as sudoku_solver.py
+import time
+
+board = [
+   # ... Your Sudoku puzzle (2D list) ...
+]
+
+start_time = time.time()
+solution = sudoku_solver.solve_sudoku(board)
+end_time = time.time()
+
+if solution:
+    # ... Use the solved board ...
+    print("Time taken:", end_time - start_time, "seconds")
+else:
+    print("No solution found.")
+
+```
+
 This will generate and solve 1,000,000 Sudoku puzzles (you can change this number in the code) using the `generate_sudoku_set()` and `solve_sudoku()` functions.  The output shows the number of valid puzzles, the total time, and the average solving time.
 
 ## Important Note: Puzzle Generation
