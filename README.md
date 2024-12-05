@@ -89,4 +89,4 @@ Valid sudoku puzzles: 127812
 Total time taken: 110.7524049282074 seconds
 Average time taken: 0.0008665326531222461 seconds
 ```
-This indicates that out of the 1,000,000 generated puzzles (or however many you generated), 128,391 were valid and solvable.  The total time taken to solve those valid puzzles was approximately 115.38 seconds, and the average solution time per valid puzzle was about 0.0009 seconds.
+This indicates that out of the 1,000,000 generated puzzles, 128391 and 127812 were valid and solvable. The average time taken to solve each valid puzzle was approximately 0.00089 and 0.00086 seconds respectively, and the total solution time about 115.38 and 110.75 seconds respectively.
