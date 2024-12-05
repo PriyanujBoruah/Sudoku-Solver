@@ -72,4 +72,17 @@ board = [
     [6, 0, 0, 0, 7, 5, 0, 0, 9],
     # ... and so on (9x9 grid)
 ]
-``
+```
+
+
+## Example Output
+
+After running `python sudoku_solver.py`, the output will be similar to the following (the exact numbers will vary depending on the generated puzzles and your hardware):
+
+```
+Valid sudoku puzzles: 128391
+Total time taken: 115.3798599243164 seconds
+Average time taken: 0.0008986670295530525 seconds
+```
+
+This indicates that out of the 1,000,000 generated puzzles (or however many you generated), 128,391 were valid and solvable.  The total time taken to solve those valid puzzles was approximately 115.38 seconds, and the average solution time per valid puzzle was about 0.0009 seconds.
