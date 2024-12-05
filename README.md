@@ -22,6 +22,8 @@ This Python project provides a Sudoku solver with both a Streamlit web app inter
 
 **1. Web App (Streamlit):**
 
+* **Live Demo:** [https://sudoku-solver-by-priyanuj.streamlit.app/](https://sudoku-solver-by-priyanuj.streamlit.app/)  (Try the app directly!)
+
 * **Installation:**
 ```bash
 pip install streamlit pandas numpy st-aggrid copy regex  # Install necessary libraries
