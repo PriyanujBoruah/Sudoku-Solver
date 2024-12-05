@@ -1,5 +1,6 @@
 import copy  # For deep copying the board
 import time
+import random
 
 def solve_sudoku(board):
     """Solves a Sudoku puzzle using backtracking."""
@@ -59,28 +60,66 @@ def solve_sudoku(board):
 
 
 
-# Example usage (to run in the terminal):
-board = [
-    [7, 8, 0, 4, 0, 0, 1, 2, 0],
-    [6, 0, 0, 0, 7, 5, 0, 0, 9],
-    [0, 0, 0, 6, 0, 1, 0, 7, 8],
-    [0, 0, 7, 0, 4, 0, 2, 6, 0],
-    [0, 0, 1, 0, 5, 0, 9, 3, 0],
-    [9, 0, 4, 0, 6, 0, 0, 0, 5],
-    [0, 7, 0, 3, 0, 0, 0, 1, 2],
-    [1, 2, 0, 0, 0, 7, 4, 0, 0],
-    [0, 4, 9, 2, 0, 6, 0, 0, 7]
-]
-
-start_time = time.time()
-solution = solve_sudoku(board)
-end_time = time.time()
 
 
+def generate_sudoku():
+    """Generates a solvable Sudoku puzzle."""
 
-if solution:
-    for row in solution:
-        print(row)
-    print(end_time - start_time)
-else:
-    print("No solution found.")
+    # Example placeholder (replace with a real generation):
+    board = [
+        [7, 8, 0, 4, 0, 0, 1, 2, 0],
+        [6, 0, 0, 0, 7, 5, 0, 0, 9],
+        [0, 0, 0, 6, 0, 1, 0, 7, 8],
+        [0, 0, 7, 0, 4, 0, 2, 6, 0],
+        [0, 0, 1, 0, 5, 0, 9, 3, 0],
+        [9, 0, 4, 0, 6, 0, 0, 0, 5],
+        [0, 7, 0, 3, 0, 0, 0, 1, 2],
+        [1, 2, 0, 0, 0, 7, 4, 0, 0],
+        [0, 4, 9, 2, 0, 6, 0, 0, 7]
+    ]
+    
+    # Important:  Shuffle to get a different order of puzzles
+    random.shuffle(board)
+    
+    return board
+
+def generate_sudoku_set(num_puzzles):
+    """Generates a set of Sudoku puzzles."""
+    puzzles = []
+    for _ in range(num_puzzles):
+      puzzles.append(generate_sudoku())
+    return puzzles
+
+
+# Generate 1 million Sudoku puzzles (replace with desired number)
+sudoku_puzzles = generate_sudoku_set(1000000)
+
+
+TIME = []
+COUNT = 1
+
+print("- - - - - - - - - - - - - - Solving Sudokus - - - - - - - - - - - - - -")
+
+for i in sudoku_puzzles:
+    # Example usage (to run in the terminal):
+    board = i
+
+    start_time = time.time()
+    solution = solve_sudoku(board)
+    end_time = time.time()
+
+    time_taken = end_time - start_time
+
+    #print(str(COUNT), end=" [")
+
+    if solution:
+        TIME.append(time_taken)
+        #print("VALID - Time taken:", time_taken, "seconds]", end="; ")
+    #else:
+        #print("invalid]", end="; ")
+    
+    COUNT += 1
+
+print("\n\nValid sudoku puzzles:", len(TIME)+1)
+print("Total time taken:", sum(TIME), "seconds")
+print("Average time taken:", sum(TIME) / len(TIME), "seconds")
