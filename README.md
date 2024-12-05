@@ -1,77 +1,75 @@
-# Sudoku Solver
+# Sudoku Solver and Generator
 
-This Python code provides a backtracking algorithm to solve Sudoku puzzles.  It can be used as a standalone solver in the terminal or integrated into a larger Sudoku application.
+This Python code provides a backtracking algorithm to solve Sudoku puzzles and generates a large set of Sudoku puzzles for testing and analysis.
 
 ## Features
 
-* **Backtracking Algorithm:**  Implements a recursive backtracking approach to efficiently find solutions.
-* **Validity Checks:**  Includes functions to check row, column, and 3x3 box constraints.
-* **Timer:** Measures and displays the time taken to solve the puzzle.
-* **Clear Output:** Prints the solved Sudoku grid to the console.
-* **Error Handling:**  Indicates if a puzzle is unsolvable.
-* **Copy Protection:** Uses `copy.deepcopy()` to avoid modifying the original input board.
+* **Backtracking Algorithm:** Implements a recursive backtracking approach for efficient solutions.
+* **Validity Checks:** Includes functions to verify row, column, and 3x3 box constraints.
+* **Timer:** Measures and displays the solution time for each puzzle and calculates the average time across a large dataset.
+* **Puzzle Generation:** Generates a set of Sudoku puzzles (currently using a placeholder – see below).
+* **Bulk Testing:** Solves a large number of puzzles (default is 1,000,000) to evaluate performance.
+* **Clear Output:**  Prints the number of valid puzzles, total solution time, and average solution time.
+* **Copy Protection:** `copy.deepcopy()` protects the original input boards during solving.
 
 ## Usage
 
-**1. Standalone Solver (Terminal):**
+**1. Running the Solver/Generator:**
 
 ```bash
-python sudoku_solver.py 
+python sudoku_solver.py
 ```
-This will execute the solver with a sample Sudoku puzzle hardcoded in the script and print the solution (if found) along with the time taken to solve.
 
-**2.  Integrating into a Sudoku Application:**
+This will:
 
-The `solve_sudoku(board)` function can be imported and used within other Python projects.  Pass a 2D list representing the Sudoku board (0 for empty cells) to the function. It returns a solved board or `None` if no solution exists.
+* Generate 1,000,000 Sudoku puzzles (you can change this number).
+* Solve each puzzle using the backtracking algorithm.
+* Print the total number of valid (solvable) puzzles, total solution time, and the average solution time across all valid puzzles.
+
+
+**2. Using the Solver Function Directly:**
+
+The `solve_sudoku(board)` function can be imported and used independently:
 
 ```python
-import sudoku_solver  # Assuming you've saved the code as sudoku_solver.py
+import sudoku_solver  # Assuming the code is saved as sudoku_solver.py
+import time
 
 board = [
-    # ... Your Sudoku board ...
+   # ... Your Sudoku puzzle (2D list) ...
 ]
 
+start_time = time.time()
 solution = sudoku_solver.solve_sudoku(board)
+end_time = time.time()
 
 if solution:
-    # ... Use the solved board in your application ...
+    # ... Use the solved board ...
+    print("Time taken:", end_time - start_time, "seconds")
 else:
-    # ... Handle the case where no solution is found ... 
+    print("No solution found.")
+
 ```
 
+## Puzzle Generation (Important Note)
 
-## Example Input
+The current `generate_sudoku()` function creates a *single* base puzzle and then shuffles its rows. This does not provide a wide variety of Sudoku puzzles.  For proper performance testing and meaningful results, you should implement a more robust Sudoku generation algorithm that creates genuinely distinct puzzles.  This is crucial for accurately assessing the solver's performance across different difficulty levels.
 
-The Sudoku board is represented as a 2D list of integers:
+## Performance Analysis
+
+The code generates and solves a large number of Sudoku puzzles (default 1,000,000). The average solving time provides a good measure of the algorithm's efficiency.  The results will be affected by:
+
+* **Puzzle Difficulty Distribution:**  A robust generator should produce puzzles of varying difficulty.
+* **Hardware:** Your computer's processing power (CPU, RAM) directly affects the solution time.
+* **Algorithm Optimizations:** Any changes to the backtracking algorithm will impact performance.
+
+
+## Example Input (for `solve_sudoku()` function)
 
 ```
 board = [
     [7, 8, 0, 4, 0, 0, 1, 2, 0],
     [6, 0, 0, 0, 7, 5, 0, 0, 9],
-    [0, 0, 0, 6, 0, 1, 0, 7, 8],
-    [0, 0, 7, 0, 4, 0, 2, 6, 0],
-    [0, 0, 1, 0, 5, 0, 9, 3, 0],
-    [9, 0, 4, 0, 6, 0, 0, 0, 5],
-    [0, 7, 0, 3, 0, 0, 0, 1, 2],
-    [1, 2, 0, 0, 0, 7, 4, 0, 0],
-    [0, 4, 9, 2, 0, 6, 0, 0, 7]
+    # ... and so on (9x9 grid)
 ]
-```
-
-`0` represents empty cells.
-
-## Example Output (Terminal)
-
-The output will be the solved Sudoku grid followed by the execution time:
-
-```
-[7, 8, 5, 4, 3, 9, 1, 2, 6]
-[6, 1, 2, 8, 7, 5, 3, 4, 9]
-[4, 9, 3, 6, 2, 1, 5, 7, 8]
-[8, 5, 7, 9, 4, 3, 2, 6, 1]
-[2, 6, 1, 7, 5, 8, 9, 3, 4]
-[9, 3, 4, 1, 6, 2, 7, 8, 5]
-[5, 7, 8, 3, 9, 4, 6, 1, 2]
-[1, 2, 6, 5, 8, 7, 4, 9, 3]
-[3, 4, 9, 2, 1, 6, 8, 5, 7]
-0.0023  # Example 
+``
