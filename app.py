@@ -144,7 +144,7 @@ if CON1.button("Get Solution", type="primary"):
 
 
 CON2 = st.container(border=True)
-CON2.html(f"<h2 style='text-align: center; color: #2f3133'>Generate and Solve Multiple Sudokus</h2>")
+CON2.html(f"<h2 style='text-align: center; color: #2f3133'>Generate and Solve Multiple Sudoku</h2>")
 
 num_puzzles = CON2.number_input("Number of puzzles:", min_value=100, max_value=100000, value=1000, step=100)
 
