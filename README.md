@@ -114,7 +114,7 @@ This indicates that out of the 1,000,000 generated puzzles (or however many you 
 The Sudoku Solver's performance was rigorously tested to ensure efficiency.  The primary optimization algorithm used in the sudoku solver is `Backtracking`. The following results were obtained on a laptop with the specifications:
 
 * Processor: 11th Gen Intel Core i7-11370H @ 3.30GHz
-* RAM: 16GB:
+* RAM: 16GB
 
 **Test 1:**
 
